@@ -19,9 +19,6 @@ open class CompositeDelegateAdapter(vararg adapters: DelegateAdapter) :
         adapterState.getAdapter(getItemViewType(position))
             .onBindViewHolder(holder, adapterState.data, position)
 
-    override fun onViewRecycled(holder: ViewHolder) =
-        adapterState.getAdapter(holder.itemViewType).onRecycled(holder)
-
     override fun getItemCount(): Int = adapterState.data.size
 
     open fun swapData(data: List<Any>) {
@@ -30,13 +27,5 @@ open class CompositeDelegateAdapter(vararg adapters: DelegateAdapter) :
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         adapterState = newAdapterState
         diffResult.dispatchUpdatesTo(this)
-    }
-
-    override fun onViewAttachedToWindow(holder: ViewHolder) {
-        adapterState.getAdapter(holder.itemViewType).onAttachedToWindow(holder)
-    }
-
-    override fun onViewDetachedFromWindow(holder: ViewHolder) {
-        adapterState.getAdapter(holder.itemViewType).onDetachedFromWindow(holder)
     }
 }

@@ -40,13 +40,7 @@ class EventDetailsFragment : Fragment() {
             arguments?.getParcelable<DetailsModel>(ARG_EVENT_DETAILS)
 
         eventDetails?.let { viewModel.loadDetailsInfo(it) }
-        /*
-                  val recyclerAdapter = CompositeDelegateAdapter(
-                PullRequestEventAdapter(this),
-                PushEventsAdapter(this)
-            )
-            binding.eventsRecyclerViewAdapter.adapter = recyclerAdapter
-         */
+
         val recyclerAdapter = EventDetailsAdapter()
         binding.eventDetailsRecyclerViewAdapter.adapter = recyclerAdapter
 

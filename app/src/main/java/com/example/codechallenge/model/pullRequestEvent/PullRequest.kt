@@ -1,33 +1,52 @@
 package com.example.codechallenge.model.pullRequestEvent
 
+import com.google.gson.annotations.SerializedName
+
 data class PullRequest(
     val additions: Int,
-    val author_association: String,
-    val changed_files: Int,
+    @SerializedName("author_association")
+    val authorAssociation: String,
+    @SerializedName("changed_files")
+    val changedFiles: Int,
     val comments: Int,
-    val comments_url: String,
+    @SerializedName("comments_url")
+    val commentsUrl: String,
     val commits: Int,
-    val commits_url: String,
-    val created_at: String,
+    @SerializedName("commits_url")
+    val commitsUrl: String,
+    @SerializedName("created_at")
+    val createdAt: String,
     val deletions: Int,
-    val diff_url: String,
+    @SerializedName("diff_url")
+    val diffUrl: String,
     val draft: Boolean,
-    val html_url: String,
+    @SerializedName("html_url")
+    val htmlUrl: String,
     val id: Int,
-    val issue_url: String,
+    @SerializedName("issue_url")
+    val issueUrl: String,
     val locked: Boolean,
-    val maintainer_can_modify: Boolean,
-    val mergeable_state: String,
+    @SerializedName("maintainer_can_modify")
+    val maintainerCanModify: Boolean,
+    @SerializedName("mergeable_state")
+    val mergeableState: String,
     val merged: Boolean,
-    val node_id: String,
+    @SerializedName("node_id")
+    val nodeId: String,
     val number: Int,
-    val patch_url: String,
-    val review_comment_url: String,
-    val review_comments: Int,
-    val review_comments_url: String,
+    @SerializedName("patch_url")
+    val patchUrl: String,
+    @SerializedName("review_comment_url")
+    val reviewCommentUrl: String,
+    @SerializedName("review_comments")
+    val reviewComments: Int,
+    @SerializedName("review_comments_url")
+    val reviewCommentsUrl: String,
     val state: String,
-    val statuses_url: String,
+    @SerializedName("statuses_url")
+    val statusesUrl: String,
     val title: String,
-    val updated_at: String,
+    @SerializedName("updated_at")
+    val updatedAt: String,
     val url: String,
 )

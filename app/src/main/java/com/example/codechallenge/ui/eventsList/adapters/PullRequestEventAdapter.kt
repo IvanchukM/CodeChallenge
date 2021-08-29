@@ -1,4 +1,4 @@
-package com.example.codechallenge.ui.eventsList
+package com.example.codechallenge.ui.eventsList.adapters
 
 import com.example.codechallenge.databinding.PullRequestItemBinding
 import com.example.codechallenge.model.pullRequestEvent.PullRequestEventModel

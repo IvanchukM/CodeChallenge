@@ -33,11 +33,6 @@ abstract class BaseAdapter<T : BaseEventModel, VB : ViewBinding>(
 
     abstract fun VB.onBind(item: T)
 
-    @Suppress("UNCHECKED_CAST")
-    override fun onRecycled(holder: RecyclerView.ViewHolder) {
-        (holder as ViewBindingHolder<VB>).viewBinding
-    }
-
     abstract fun isForViewType(item: Any): Boolean
 
     abstract fun T.getItemId(): Any
@@ -50,17 +45,6 @@ abstract class BaseAdapter<T : BaseEventModel, VB : ViewBinding>(
     override fun isForViewType(items: List<Any>, position: Int): Boolean {
         return isForViewType(items[position])
     }
-
-    @Suppress("UNCHECKED_CAST")
-    final override fun onAttachedToWindow(holder: RecyclerView.ViewHolder) =
-        (holder as ViewBindingHolder<VB>).viewBinding.onAttachedToWindow()
-
-    @Suppress("UNCHECKED_CAST")
-    final override fun onDetachedFromWindow(holder: RecyclerView.ViewHolder) =
-        (holder as ViewBindingHolder<VB>).viewBinding.onDetachedFromWindow()
-
-    open fun VB.onAttachedToWindow() {}
-    open fun VB.onDetachedFromWindow() {}
 
     private class ViewBindingHolder<VB : ViewBinding>(
         val viewBinding: VB

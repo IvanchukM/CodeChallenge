@@ -3,8 +3,11 @@ package com.example.codechallenge.utils
 import com.example.codechallenge.model.BaseEventModel
 import com.example.codechallenge.model.DetailsModel
 import com.example.codechallenge.model.Params
+import com.example.codechallenge.model.createEvent.CreateEventModel
+import com.example.codechallenge.model.issueEvent.IssueEventModel
 import com.example.codechallenge.model.pullRequestEvent.PullRequestEventModel
 import com.example.codechallenge.model.pushEvent.PushEventModel
+import com.example.codechallenge.model.watchEvent.WatchEventModel
 import java.util.*
 
 object Mapper {
@@ -28,6 +31,54 @@ object Mapper {
                 )
             )
             is PullRequestEventModel -> DetailsModel(
+                params = listOf(
+                    Params(
+                        name = model.actor::avatarId.name.toUpperCase(Locale.ROOT),
+                        value = model.actor.avatarId
+                    ),
+                    Params(
+                        name = model.actor::avatarUrl.name.toUpperCase(Locale.ROOT),
+                        value = model.actor.avatarUrl
+                    ),
+                    Params(
+                        name = model.actor::displayLogin.name.toUpperCase(Locale.ROOT),
+                        value = model.actor.displayLogin
+                    )
+                )
+            )
+            is CreateEventModel -> DetailsModel(
+                params = listOf(
+                    Params(
+                        name = model.actor::avatarId.name.toUpperCase(Locale.ROOT),
+                        value = model.actor.avatarId
+                    ),
+                    Params(
+                        name = model.actor::avatarUrl.name.toUpperCase(Locale.ROOT),
+                        value = model.actor.avatarUrl
+                    ),
+                    Params(
+                        name = model.actor::displayLogin.name.toUpperCase(Locale.ROOT),
+                        value = model.actor.displayLogin
+                    )
+                )
+            )
+            is IssueEventModel-> DetailsModel(
+                params = listOf(
+                    Params(
+                        name = model.actor::avatarId.name.toUpperCase(Locale.ROOT),
+                        value = model.actor.avatarId
+                    ),
+                    Params(
+                        name = model.actor::avatarUrl.name.toUpperCase(Locale.ROOT),
+                        value = model.actor.avatarUrl
+                    ),
+                    Params(
+                        name = model.actor::displayLogin.name.toUpperCase(Locale.ROOT),
+                        value = model.actor.displayLogin
+                    )
+                )
+            )
+            is WatchEventModel-> DetailsModel(
                 params = listOf(
                     Params(
                         name = model.actor::avatarId.name.toUpperCase(Locale.ROOT),

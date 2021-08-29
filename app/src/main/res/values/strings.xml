@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CodeChallenge</string>
+    <string name="error_msg">Some error happened. Retry later</string>
 </resources>

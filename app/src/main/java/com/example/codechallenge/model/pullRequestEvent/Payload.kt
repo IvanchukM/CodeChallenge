@@ -1,7 +1,10 @@
 package com.example.codechallenge.model.pullRequestEvent
 
+import com.google.gson.annotations.SerializedName
+
 data class Payload(
     val action: String,
     val number: Int,
-    val pull_request: PullRequest
+    @SerializedName("pull_request")
+    val pullRequest: PullRequest
 )

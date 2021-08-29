@@ -1,10 +1,14 @@
 package com.example.codechallenge.di
 
+import android.app.Application
+import android.content.Context
+import com.example.codechallenge.BuildConfig
 import com.example.codechallenge.api.EventApi
 import com.example.codechallenge.model.BaseEventModel
 import com.example.codechallenge.utils.EventsDeserializer
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -15,6 +19,10 @@ import javax.inject.Singleton
 
 @Module
 class AppModule {
+
+    @Provides
+    @Singleton
+    fun provideContext(application: Application): Context = application.applicationContext
 
     @Provides
     @Singleton
@@ -36,9 +44,10 @@ class AppModule {
     @Singleton
     fun providesRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit =
         Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
+            .baseUrl("https://api.github.com")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
 
     @Provides

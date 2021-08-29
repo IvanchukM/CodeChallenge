@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.codechallenge.databinding.DetailsItemBinding
 import com.example.codechallenge.model.DetailsModel
 import com.example.codechallenge.model.Params
+import com.example.codechallenge.utils.delegateAdapter.BaseAdapter
 
 class EventDetailsAdapter : RecyclerView.Adapter<EventDetailsViewHolder>() {
 
